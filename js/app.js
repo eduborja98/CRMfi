@@ -108,24 +108,25 @@ form.addEventListener('submit', (e) => {
 
     // Envío simulado / Apertura de cliente de correo
     setTimeout(() => {
-        const bodyContent = `Hola ${fullName}, bienvenido al Casino Rio.\n\nSegún tu frecuencia (${freqStr}), has sido asignado al nivel de Club ${tierLabel}.\n\nMuestra tu código QR en la entrada para acceder a tus beneficios.`;
+        const promoCode = 'BIENVENIDA50K';
+        const bodyContent = `Hola ${fullName},\n\n¡Bienvenido al exclusivo Casino Rio VIP!\n\nSegún tu frecuencia (${freqStr}), has sido asignado al nivel de Club ${tierLabel}.\n\nComo obsequio especial de bienvenida, tienes un bono de juego por valor de $50.000 pesos.\n\nTu código promocional es: ${promoCode}\n\nMuestra tu código QR junto con este código en la entrada para acceder a tus beneficios al instante.\n\nNos vemos pronto.`;
         
         // Simulación visual en UI
         Swal.fire({
-            title: 'Confirmación Enviada',
-            text: `Se ha enviado el nivel de adaptación al correo: ${inputs.correo.value}`,
+            title: '¡Confirmación y Bono Enviados!',
+            text: `Revisa ${inputs.correo.value} para ver tu nivel y tu bono de $50.000`,
             icon: 'info',
             background: '#1f1f1f',
             color: '#fff',
             confirmButtonColor: '#d4af37',
             toast: true,
             position: 'top-end',
-            timer: 4000,
+            timer: 5000,
             showConfirmButton: false
         });
 
         // Abre el cliente de correo predeterminado del usuario con los datos listos
-        window.location.href = `mailto:${inputs.correo.value}?subject=Confirmación de Registro VIP Casino Rio&body=${encodeURIComponent(bodyContent)}`;
+        window.location.href = `mailto:${inputs.correo.value}?subject=¡Bienvenido a Casino Rio VIP + Bono de $50.000!&body=${encodeURIComponent(bodyContent)}`;
     }, 1500);
 });
 
